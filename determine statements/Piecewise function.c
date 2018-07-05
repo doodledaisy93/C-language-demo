@@ -1,4 +1,4 @@
-//·Ö¶Îº¯Êý
+//åˆ†æ®µå‡½æ•°
 //y=-1;x<0
 //y=0;x=0
 //y=2x;x>0
@@ -10,7 +10,7 @@ int main()
 	scanf("%lf",&x);
 	switch(x>=0){
 		case 1:
-			y=2*x;
+		y=2*x;
 		break;
 		default:
 		y=-1;
