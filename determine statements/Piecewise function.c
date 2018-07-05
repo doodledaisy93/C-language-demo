@@ -9,7 +9,7 @@ int main()
 	double y;
 	scanf("%lf",&x);
 	switch(x>=0){
-		case 1:
+		case 1: 
 		y=2*x;
 		break;
 		default:
