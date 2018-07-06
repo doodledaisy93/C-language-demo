@@ -1,4 +1,4 @@
-//ÅĞ¶ÏÊÇ·ñÎªËØÊı 
+//åˆ¤æ–­æ˜¯å¦ä¸ºç´ æ•° 
 #include<stdio.h>
 int main(){
 	int x;
@@ -6,12 +6,12 @@ int main(){
 	int isprime=0;
 	for(int i=2;i<x;i++){
 		if(x%i==0){
-			isprime=1;             //Èç¹ûÈ¡ÓàµÃµ½0£¬¾Í²»ÊÇËØÊı£¬½«isprime¸³ÖµÎª1 
-		}						   
+		isprime=1;             //å¦‚æœå–ä½™å¾—åˆ°0ï¼Œå°±ä¸æ˜¯ç´ æ•°ï¼Œå°†isprimeèµ‹å€¼ä¸º1 
+	}						   
 	}if(isprime==0){
-		printf("ÊÇ\n");
+		printf("æ˜¯\n");
 	}else{
-		printf("²»ÊÇ\n");
+		printf("ä¸æ˜¯\n");
 	}return 0;
 }
 
