@@ -1,16 +1,36 @@
-//ä¸€ä¸ªè‡ªç„¶æ•°æœ‰å¤šå°‘ä½
+//Çó·ûºÏ¸ø¶¨Ìõ¼þµÄÕûÊý¼¯
+//¸ø¶¨²»³¬¹ý6µÄÕýÕûÊýa£¬¿¼ÂÇ´Óa¿ªÊ¼µÄÁ¬Ðø4¸öÊý×Ö£¬Êä³öËùÓÐÓÉËûÃÇ×é³ÉµÄÎÞÖØ¸´Êý×ÖµÄÈýÎ»Êý
+//ÊäÈë¸ñÊ½£ºÊäÈëÔÚÒ»ÐÐÖÐ¸ø³öa
+//Êä³ö¸ñÊ½£ºÊä³öÂú×ãÌõ¼þµÄÈýÎ»Êý£¬ÒªÇó´ÓÐ¡µ½´ó£¬Ã¿ÐÐ6¸öÕûÊý£¬ÕûÊý¼ä¿Õ¸ñ·ÖÀë£¬µ«ÐÐÄ©²»ÄÜÓÐ¶àÓà¿Õ¸ñ
+//ÊäÈëÑùÀý£º2
+//Êä³öÑùÀý£º234 235 243 245 253 254
+//          324 325 342 345 352 354
+//			423 425 432 435 452 453
+//			523 524 532 534 542 543 
 #include<stdio.h>
 int main()
 {
-	int a;             //æ³¨æ„intèŒƒå›´ 
-	int b=0;         
+	int a,i,j,k;
+	int count=0;
 	scanf("%d",&a);
-	    b++;           //åŠ ä¸Š8 9è¡Œå¯ä»¥æ•°0  
-	    a/=10;
-	while(a>0){
-	    b++;           //11 12è¡Œæ¢äº†ä½ç½® 
-	    a/=10;
-		
-	}printf("æ€»å…±æœ‰%dä½\n",b);
+	for(i=a;i<=a+3;i++){
+		for(j=a;j<=a+3;j++){
+			for(k=a;k<=a+3;k++)
+			if(i!=j){
+				if(i!=k){
+					if(j!=k){
+						count++;
+						printf("%d%d%d",i,j,k);
+						if(count%6==0){
+							printf("\n");
+						}else{
+							printf(" ");
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	return 0;
- } 
+}
