@@ -48,4 +48,6 @@ int main()
 	}	
 	return 0; 
  }
- //看不明白就回去看https://www.bilibili.com/video/av15267247/?p=41 
+//看不明白就回去看https://www.bilibili.com/video/av15267247/?p=41 
+//noip2004普及组第1题
+//noip普及组就是初中的题..还是第1题..
