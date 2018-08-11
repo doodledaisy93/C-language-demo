@@ -1,129 +1,150 @@
-#include <stdio.h>
-#include <stdlib.h>
-typedef struct Link{
-    int  data;
-    struct Link *next;
-}link;
-//åˆ›å»ºé“¾è¡¨å‡½æ•° 
-link *initLink();
 
-//é“¾è¡¨æ’å…¥çš„å‡½æ•°ï¼Œheadæ˜¯é“¾è¡¨å¤´æŒ‡é’ˆï¼Œdataæ˜¯æ’å…¥çš„èŠ‚ç‚¹çš„æ•°æ®åŸŸï¼Œaddæ˜¯æ’å…¥çš„ä½ç½® 
-link * insert(link *head,int data,int add);
+    #include <stdio.h>
+    #include <stdlib.h>
+    struct Link{
+        int  data;
+        struct Link *next;
+    };
+    typedef struct Link link;
+//´´½¨Á´±íº¯Êı 
+    link *initLink();
 
-//åˆ é™¤èŠ‚ç‚¹çš„å‡½æ•°ï¼Œheadä»£è¡¨æ“ä½œé“¾è¡¨ï¼Œaddä»£è¡¨åˆ é™¤èŠ‚ç‚¹çš„ä½ç½® 
-link *del(link *head,int add);
+//Á´±í²åÈëµÄº¯Êı,headÊÇÍ·Ö¸Õë,dataÊÇ²åÈë½ÚµãµÄÊı¾İÓò,addÊÇ²åÈëµÄÎ»ÖÃ 
+    link * insert(link *head,int data,int add);
 
-//æŸ¥æ‰¾èŠ‚ç‚¹çš„å‡½æ•°ï¼Œdataä¸ºç›®æ ‡èŠ‚ç‚¹çš„æ•°æ®åŸŸçš„å€¼ 
-int select(link *head,int data);
+//É¾³ı½ÚµãµÄº¯Êı,head´ú±í²Ù×÷Á´±í,dele´ú±íÒªÉ¾³ıµÄÊı¾İ 
+    link *del(link *head,int dele);
 
-//æ›´æ–°èŠ‚ç‚¹çš„å‡½æ•°ï¼ŒnewElemä¸ºæ–°çš„æ•°æ®ä¸çš„å€¼ 
-link *amend(link *head,int add,int newdata);
+//²éÕÒ½áµãµÄº¯Êı,dataÎªÄ¿±ê½ÚµãµÄÊı¾İÓòµÄÖµ 
+    int select(link *head,int data);
 
-//å°†æ­¤æ—¶çš„é“¾è¡¨è¾“å‡º 
-void display(link *head);
+//¸üĞÂ½ÚµãµÄº¯Êı,newElemÎªĞÂµÄÊı¾İ 
+    link *amend(link *head,int add,int newdata);
 
-int main() {
-    //è¾“å…¥(1,2,3,4ï¼Œ-1)
-    printf("åˆå§‹åŒ–é“¾è¡¨ä¸º:\n");
-    link *head = initLink();
-    display(head);
+//½«´ËÊ±µÄÁ´±íÊä³ö 
+    void display(link *head);
+
+    int main() {
+    //ÊäÈë(1,2,3,4,-1)
+        printf("³õÊ¼»¯Á´±íÎª:\n");
+        link *head = initLink();
+        display(head);
    
-    printf("åœ¨ç¬¬4çš„ä½ç½®æ’å…¥5:\n");
-    head = insert(head, 5, 4);
-    display(head);
+        printf("ÔÚµÚ4µÄÎ»ÖÃ²åÈë5:\n");
+        head = insert(head, 5, 4);
+        display(head);
    
-    printf("åˆ é™¤å…ƒç´ 3:\n");
-    head = del(head, 3);
-    display(head);
+        printf("É¾³ıÔªËØ3:\n");
+        head = del(head, 3);
+        display(head);
    
-    printf("æŸ¥æ‰¾å…ƒç´ 2çš„ä½ç½®ä¸º:\n");
-    int address = select(head, 2);
-    if (address == -1) {
-        printf("æ²¡æœ‰è¯¥å…ƒç´ ");
-    }
-	else{
-        printf("å…ƒç´ 2çš„ä½ç½®ä¸º:%d\n",address);
-    }
-    printf("æ›´æ”¹ç¬¬3çš„ä½ç½®çš„æ•°æ®ä¸º7:\n");
-    head = amend(head, 3, 7);
-    display(head);
-   
-    return 0;
-}
-link * initLink()
-{
-    int n;
-    link *head = (link *)malloc(sizeof(link));//åˆ›å»ºä¸€ä¸ªå¤´èŠ‚ç‚¹ 
-    link *p = head;//å£°æ˜ä¸€ä¸ªæŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹ï¼Œç”¨äºéå†é“¾è¡¨ 
-    //ç”Ÿæˆé“¾è¡¨ï¼Œè¯»æ•°ï¼Œè¯»åˆ°-1ä¸ºæ­¢ã€‚æœ€åç»“æœæ²¡æœ‰-1 
-    scanf("%d",&n);
-    while(n != -1){
-	link *a = (link *)malloc(sizeof(link));
-	a->data = n;
-	a->next = NULL;
-	p->next = a;
-	p = p->next;
-	scanf("%d",&n);
-	}
-    return head;
-}
-link *insert(link *head,int data,int add){
-    link * p=head;//åˆ›å»ºä¸´æ—¶èŠ‚ç‚¹p
-    //é¦–å…ˆæ‰¾åˆ°è¦æ’å…¥ä½ç½®çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹ 
-    for (int i = 1; i < add; i++) {
-        if (p == NULL) {
-            printf("æ’å…¥æ— æ•ˆ\n");
-            return head;
+        printf("²éÕÒÔªËØ2µÄÎ»ÖÃÎª:\n");
+        int address = select(head, 2);
+        if (address == -1) {
+            printf("Ã»ÓĞ¸ÃÔªËØ\n");
         }
-        p = p->next;
-    }
-    //åˆ›å»ºæ’å…¥èŠ‚ç‚¹c
-    link *c = (link *)malloc(sizeof(link));
-    c->data = data;
-    //å‘é“¾è¡¨ä¸­æ’å…¥èŠ‚ç‚¹ 
-    c->next = p->next;
-    p->next = c;
-    return  head;
-}
-link *del(link *head,int add){
-    link *p = head;
-    //éå†åˆ°è¢«åˆ é™¤èŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹ 
-    for (int i = 1; i<add; i++) {
-        p = p->next;
-    }
-    link *del = p->next;//å•ç‹¬è®¾ç½®ä¸€ä¸ªæŒ‡é’ˆæŒ‡å‘è¢«åˆ é™¤çš„èŠ‚ç‚¹ï¼Œé˜²æ­¢ä¸¢å¤± 
-    p->next = p->next->next;//åˆ é™¤æŸä¸ªèŠ‚ç‚¹çš„æ–¹æ³•å°±æ˜¯æ›´æ”¹å‰ä¸€ä¸ªèŠ‚ç‚¹çš„æŒ‡å‘ 
-    free(del);//æ‰‹åŠ¨é‡Šæ”¾ï¼Œé˜²æ­¢å†…å­˜æ³„æ¼ 
-    return head;
-}
-int select(link *head,int data){
-    link *t = head;
-    int i = 1;
-    while (t->next) {
-        t = t->next;
-        if (t->data == data) {
-            return i;
+	   else{
+            printf("ÔªËØ2µÄÎ»ÖÃÎª:%d\n",address);
         }
-        i++;
+        
+		printf("°Ñ4¸ÄÎª7:\n");
+        head = amend(head, 4, 7);
+        
+        printf("°Ñ3¸ÄÎª7:\n");
+        head = amend(head, 3, 7);
+        
+   
+        return 0;
     }
-    return -1;
-}
-link *amend(link *head,int add,int newdata){
-    link *p = head;
-    p = p->next;//pæŒ‡å‘å¤´èŠ‚ç‚¹ 
-    //pæŒ‡å‘è¢«åˆ é™¤èŠ‚ç‚¹ 
-    for (int i = 1; i < add; i++) {
-        p = p->next;
+    link * initLink()
+    {
+        int n;
+        link *head = (link *)malloc(sizeof(link));//´´½¨Ò»¸öÍ·½Úµã 
+        link *p = head;//ÉùÃ÷Ò»¸öÖ¸ÕëÖ¸ÏòÍ·½Úµã£¬ÓÃÓÚ±éÀúÁ´±í 
+        //Éú³ÉÁ´±í£¬¶ÁÊı£¬¶Áµ½-1ÎªÖ¹¡£×îºóµÄ½á¹ûÃ»ÓĞ-1 
+        scanf("%d",&n);
+        while(n != -1){
+	   link *q = (link *)malloc(sizeof(link));
+	   q->data = n;
+	   q->next = NULL;
+	   p->next = q;
+	   p = p->next;
+	   scanf("%d",&n);
+	   }
+        return head;
     }
-    p->data = newdata;
-    return head;
-}
-void display(link *head){
-    link *p = head;//å°†pæŒ‡é’ˆé‡æ–°æŒ‡å‘å¤´èŠ‚ç‚¹ 
-    //åªè¦pæŒ‡é’ˆæŒ‡å‘çš„èŠ‚ç‚¹çš„nextä¸æ˜¯NULL,æ‰§è¡Œè¾“å‡ºè¯­å¥ 
-    while (p->next) {
-        p = p->next;
-        printf("%d",p->data);
+    link *insert(link *head,int data,int add){
+        link * p=head;//´´½¨ÁÙÊ±½Úµãp 
+        //Ê×ÏÈÕÒµ½Òª²åÈëÎ»ÖÃµÄÉÏÒ»¸ö½Úµã 
+        for (int i = 1; i < add; i++) {
+            if (p == NULL) {
+                printf("²åÈëÎŞĞ§\n");
+                return head;
+            }
+            p = p->next;
+        }
+        //´´½¨²åÈë½Úµãc
+        link *c = (link *)malloc(sizeof(link));
+        c->data = data;
+        //ÏòÁ´±íÖĞ²åÈë½Úµã 
+        c->next = p->next;
+        p->next = c;
+        return  head;
     }
-    printf("\n");
-}
+    link *del(link *head,int dele){
+        link *p = head;
+        //±éÀúµ½±»É¾³ı½ÚµãµÄÉÏÒ»¸ö½Úµã 
+        while(p->next->data != dele) {
+            p = p->next;
+        }
+        link *del = p->next;//µ¥¶ÀÉèÖÃÒ»¸öÖ¸ÕëÖ¸Ïò±»É¾³ıµÄ½Úµã£¬·ÀÖ¹¶ªÊ§ 
+        p->next = p->next->next;//É¾³ıÄ³¸ö½ÚµãµÄ·½·¨¾ÍÊÇ¸ü¸ÄÇ°Ò»¸ö½ÚµãµÄÖ¸Ïò 
+        free(del);//ÊÖ¶¯ÊÍ·Å£¬·ÀÖ¹ÄÚ´æĞ¹Â© 
+        return head;
+    }
+    int select(link *head,int data){
+        link *t = head;
+        int i = 1;
+        while (t->next) {
+            t = t->next;
+            if (t->data == data) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+    link *amend(link *head,int replace,int newdata){
+        link *p = head;
+        p = p->next;//pÖ¸ÏòÍ·½Úµã 
+        //pÖ¸Ïò±»É¾³ıµÄ½Úµã
+        int isprime;
+        while(p->next != NULL) {
+            if(p->data != replace){
+            	isprime = 0;
+			}
+			else{
+				isprime = 1;
+				break;
+			}
+			p = p->next;
+        }
+        if(isprime == 0){
+        	printf("ÔÚÁ´±íÖĞÎ´ÕÒµ½%d\n",replace);
+		}
+		else if(isprime == 1){
+			p->data = newdata;
+			display(head);
+		}
+        return head;
+    }
+    void display(link *head){
+        link *p = head;//½«pÖ¸ÕëÖØĞÂÖ¸ÏòÍ·½Úµã 
+        //Ö»ÒªpÖ¸ÕëÖ¸ÏòµÄ½ÚµãµÄnext²»ÊÇNULL,Ö´ĞĞÊä³öÓï¾ä 
+        while (p->next != NULL) {
+            p = p->next;
+            printf("%d",p->data);
+        }
+        printf("\n");
+    }
+
